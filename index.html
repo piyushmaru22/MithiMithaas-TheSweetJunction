@@ -165,6 +165,11 @@ footer{padding-bottom:96px}
 @media(max-width:360px){.hero h1{font-size:2rem}.chip{padding:6px 11px}}
 .sec{padding-left:18px;padding-right:18px}
 @media(max-width:560px){.sec{padding-left:16px;padding-right:16px}.hero,.steps{padding-left:16px;padding-right:16px}}
+.qi{display:inline-flex;align-items:center;gap:4px;min-width:0!important}
+.qi input{width:68px;padding:6px 4px;text-align:center;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:500 1rem 'DM Sans'}
+#pan .qi input{width:68px;padding:6px 4px}
+.qi em{font-style:normal;color:var(--muted);font-size:.85rem}
+.btn:disabled{opacity:.5;pointer-events:none}
 </style>
 </head>
 <body>
@@ -243,7 +248,7 @@ const M={
 const I=[];for(const c in M)M[c].forEach(a=>I.push({c,n:a[0],p:a[1],u:a[2]||"kg",t:a[3]||""}));
 const IC={'Mithai & Paks':'#e8892b','Laddoos':'#f2b24c','Pedas & Milk Sweets':'#d9a066','Sugar-Free':'#7a9a4b','Chocolates & Treats':'#7a4a32'};
 const st=u=>u==="pc"?1:u==="fq"?.25:.5;
-const fq=(q,u)=>u==="pc"?q+(q>1?" pcs":" pc"):q+" kg";
+const fq=(q,u)=>u==='pc'?q+(q>1?' pcs':' pc'):(q<1?Math.round(q*1000)+' g':(+(+q).toFixed(3))+' kg');
 const R=n=>Math.round(n).toLocaleString("en-IN");
 let cart={},sel={},cat="All",term="";
 try{cart=JSON.parse(localStorage.getItem("mm-cart")||"{}")||{}}catch(e){}
@@ -260,7 +265,7 @@ function draw(){
     const q=sel[i]||st(it.u);
     h+=`<div class="card"><div class="ic" style="background:${IC[it.c]}"></div><h3>${it.n}</h3>${it.t?`<span class="tag">${it.t}</span>`:""}
     <div class="price"><b>₹${R(it.p)}</b> / ${it.u==="pc"?"piece":"kg"}</div>${cart[i]?`<span class='tag' style='background:#dff1df;color:#1f5d1f'>In cart: ${fq(cart[i],it.u)}</span>`:''}
-    <div class="qty"><button data-a="m" data-i="${i}">−</button><span>${fq(q,it.u)}</span><button data-a="p" data-i="${i}">+</button></div>
+    <div class="qty"><button data-a="m" data-i="${i}">−</button><span class='qi'><input class='qv' data-i='${i}' inputmode='decimal' value='${qv(q,it.u)}' aria-label='Quantity'><em>${it.u==='pc'?'pc':'g'}</em></span><button data-a="p" data-i="${i}">+</button></div>
     <button class="btn" data-a="add" data-i="${i}">Add to cart · ₹${R(it.p*q)}</button></div>`});
   $("list").innerHTML=h.replace(/^<\/div>/,"")+(h?"</div>":'<p class="price">No sweets match your search.</p>');
 }
@@ -275,7 +280,7 @@ function upd(){const[n,t]=tot();$("fc").textContent=n;$("ft").textContent=R(t);$
 function cartDraw(){
   const ks=Object.keys(cart);
   $("ci").innerHTML=ks.length?ks.map(i=>{const it=I[i];return`<div class="ci"><div>${it.n}<small>₹${R(it.p)} × ${fq(cart[i],it.u)} = ₹${R(it.p*cart[i])}</small></div>
-  <div class="qty"><button data-a="m" data-i="${i}">−</button><span>${fq(cart[i],it.u)}</span><button data-a="p" data-i="${i}">+</button></div></div>`}).join(""):'<p class="price">Your cart is empty. Add some sweets!</p>';
+  <div class="qty"><button data-a="m" data-i="${i}">−</button><span class='qi'><input class='cv' data-i='${i}' inputmode='decimal' value='${qv(cart[i],it.u)}' aria-label='Quantity'><em>${it.u==='pc'?'pc':'g'}</em></span><button data-a="p" data-i="${i}">+</button></div></div>`}).join(""):'<p class="price">Your cart is empty. Add some sweets!</p>';
   const L=ks.map(i=>`• ${I[i].n} – ${fq(cart[i],I[i].u)} = ₹${R(I[i].p*cart[i])}`).join("\n");
   const msg=`Hello Mithi Mithas! I'd like to order:\n${L}\n\nTotal: ₹${R(tot()[1])} (delivery extra)\nName: ${$("nm").value}\nNeeded by: ${$("dt").value}\nNotes: ${$("nt").value}`;
   $('wa').classList.toggle('off',!ks.length);
@@ -348,6 +353,36 @@ $('s').addEventListener('input',()=>list.classList.add('anim'),true);
 ['x','nw'].forEach(id=>$(id).addEventListener('click',()=>list.classList.remove('anim'),true));
 document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}},{passive:true});
 addEventListener('scroll',()=>{hd.classList.toggle('sc',scrollY>8);const m=document.documentElement.scrollHeight-innerHeight;br.style.width=(m>0?scrollY/m*100:0)+'%'},{passive:true});
+const mn=u=>u==='pc'?1:.1,mx=u=>u==='pc'?500:50,qv=(q,u)=>u==='pc'?q:Math.round(q*1000);
+const cl=(q,u)=>Math.min(mx(u),Math.max(mn(u),Math.round(q*1000)/1000));
+const minTxt=u=>u==='pc'?'1 piece':'100 g';
+function parseQ(v,u){const s=String(v).toLowerCase().replace(',','.'),n=parseFloat(s);if(!(n>0))return 0;if(u==='pc')return Math.round(n);return(s.includes('kg')||(s.includes('.')&&n<50))?n:n/1000}
+list.oninput=e=>{const t=e.target;if(!t.classList.contains('qv'))return;const i=t.dataset.i,it=I[i],q=parseQ(t.value,it.u),b=t.closest('.card').querySelector('[data-a=add]');
+ if(q>=mn(it.u)){sel[i]=Math.min(q,mx(it.u));b.disabled=false;b.textContent='Add to cart · ₹'+R(it.p*sel[i])}else{b.disabled=true;b.textContent=q>0?'Min '+minTxt(it.u):'Enter quantity'}};
+list.addEventListener('focusout',e=>{const t=e.target;if(!t.classList.contains('qv'))return;const i=t.dataset.i,it=I[i],raw=parseQ(t.value,it.u),q=cl(raw||st(it.u),it.u),b=t.closest('.card').querySelector('[data-a=add]');
+ if(raw&&raw<mn(it.u))toast('Minimum quantity is '+minTxt(it.u));
+ if(raw>mx(it.u))toast('Maximum quantity is '+(it.u==='pc'?'500 pieces':'50 kg'));
+ sel[i]=q;t.value=qv(q,it.u);b.disabled=false;b.textContent='Add to cart · ₹'+R(it.p*q)});
+list.onkeydown=e=>{if(e.key==='Enter'&&e.target.classList.contains('qv')){e.preventDefault();e.target.blur()}};
+list.onclick=e=>{const b=e.target.closest('button');if(!b||!b.dataset.a)return;const i=+b.dataset.i,it=I[i],s=st(it.u),q=sel[i]||s;
+ if(b.dataset.a==='m')sel[i]=cl(q-s,it.u);
+ else if(b.dataset.a==='p')sel[i]=cl(q+s,it.u);
+ else{cart[i]=cl((cart[i]||0)+q,it.u);sv();sel[i]=s;upd();toast(it.n+' added to cart');b.textContent='Added ✓';b.classList.add('okb');setTimeout(draw,600);return}
+ draw()};
+function refreshTotals(){const[n,t]=tot();$('fc').textContent=n;$('ft').textContent=R(t);$('tt').textContent=R(t);setMin()}
+$('ci').oninput=e=>{const t=e.target;if(!t.classList.contains('cv'))return;const i=t.dataset.i,it=I[i],v=Math.min(parseQ(t.value,it.u),mx(it.u));if(!(v>=mn(it.u)))return;cart[i]=v;sv();t.closest('.ci').querySelector('small').textContent='₹'+R(it.p)+' × '+fq(v,it.u)+' = ₹'+R(it.p*v);refreshTotals()};
+$('ci').addEventListener('focusout',e=>{const t=e.target;if(!t.classList||!t.classList.contains('cv'))return;const i=t.dataset.i,it=I[i],raw=parseQ(t.value,it.u);if(raw&&raw<mn(it.u))toast('Minimum quantity is '+minTxt(it.u));cart[i]=cl(raw||cart[i],it.u);sv();upd()});
+$('ci').onkeydown=e=>{if(e.key==='Enter'&&e.target.classList.contains('cv'))e.target.blur()};
+$('ci').onclick=e=>{const b=e.target.closest('button');if(!b||!b.dataset.a)return;const i=b.dataset.i,u=I[i].u,s=st(u),n=cart[i]+(b.dataset.a==='p'?s:-s);if(n<mn(u)-1e-9)delete cart[i];else cart[i]=cl(n,u);sv();upd()};
+function orderText(id){
+ const dl=$('md').value==='Delivery',ks=Object.keys(cart),n=new Date(),d=new Date(val('dt')+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),nums=['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'],ln='──────────────';
+ let t='🌸 *NEW ORDER '+id+'* 🌸'+NL+'🕐 _'+n.toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})+'_'+NL+NL+'🛍️ *ORDER DETAILS*'+NL+ln+NL;
+ ks.forEach((i,j)=>{const it=I[i];t+=(nums[j]||(j+1)+'.')+' *'+it.n+'*'+NL+'     ⚖️ '+fq(cart[i],it.u)+' × ₹'+R(it.p)+(it.u==='pc'?'/pc':'/kg')+' = *₹'+R(it.p*cart[i])+'*'+NL});
+ t+=ln+NL+'💰 *Items total: ₹'+R(tot()[1])+'*'+NL+'🚚 _Delivery charges extra_'+NL+NL+'👤 *CUSTOMER*'+NL+'🙋 Name: '+val('nm')+NL+'📞 Phone: '+val('ph')+NL+NL;
+ t+=dl?'📍 *DELIVERY ADDRESS*'+NL+'🏠 '+val('ad')+NL+'🛣️ '+val('a3')+(val('a4')?NL+'📌 Landmark: '+val('a4'):'')+NL+'🏙️ '+val('a5')+' - '+val('a6'):'🏪 *PICKUP FROM SHOP*';
+ t+=NL+NL+'🗓️ *NEEDED BY*'+NL+'📅 '+d+(val('oc')?NL+'🎉 Occasion: '+val('oc'):'')+(val('nt')?NL+'📝 Notes: '+val('nt'):'');
+ t+=NL+NL+'🙏 Thank you for choosing *Mithi Mithaas*! 🍬✨';
+ return t}
 list.classList.add('anim');
 chips();draw();upd();ready=true;
 </script>
