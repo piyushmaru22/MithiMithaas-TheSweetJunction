@@ -170,6 +170,10 @@ footer{padding-bottom:96px}
 #pan .qi input{width:68px;padding:6px 4px}
 .qi em{font-style:normal;color:var(--muted);font-size:.85rem}
 .btn:disabled{opacity:.5;pointer-events:none}
+.qty button.rm{width:30px;height:30px;border:0;background:none;color:#b3342a;font-size:.95rem;margin-left:2px}
+.qty button.rm:hover{background:#b3342a;color:#fff;transform:scale(1.1);box-shadow:none}
+#cc{align-self:flex-start;background:none;border:0;color:var(--muted);font:.8rem 'DM Sans';text-decoration:underline;cursor:pointer;padding:0}
+#cc:hover{color:#b3342a}
 </style>
 </head>
 <body>
@@ -280,7 +284,7 @@ function upd(){const[n,t]=tot();$("fc").textContent=n;$("ft").textContent=R(t);$
 function cartDraw(){
   const ks=Object.keys(cart);
   $("ci").innerHTML=ks.length?ks.map(i=>{const it=I[i];return`<div class="ci"><div>${it.n}<small>₹${R(it.p)} × ${fq(cart[i],it.u)} = ₹${R(it.p*cart[i])}</small></div>
-  <div class="qty"><button data-a="m" data-i="${i}">−</button><span class='qi'><input class='cv' data-i='${i}' inputmode='decimal' value='${qv(cart[i],it.u)}' aria-label='Quantity'><em>${it.u==='pc'?'pc':'g'}</em></span><button data-a="p" data-i="${i}">+</button></div></div>`}).join(""):'<p class="price">Your cart is empty. Add some sweets!</p>';
+  <div class="qty"><button data-a="m" data-i="${i}">−</button><span class='qi'><input class='cv' data-i='${i}' inputmode='decimal' value='${qv(cart[i],it.u)}' aria-label='Quantity'><em>${it.u==='pc'?'pc':'g'}</em></span><button data-a="p" data-i="${i}">+</button><button class='rm' data-a='r' data-i='${i}' aria-label='Remove item' title='Remove item'>✕</button></div></div>`}).join(""):'<p class="price">Your cart is empty. Add some sweets!</p>';
   const L=ks.map(i=>`• ${I[i].n} – ${fq(cart[i],I[i].u)} = ₹${R(I[i].p*cart[i])}`).join("\n");
   const msg=`Hello Mithi Mithas! I'd like to order:\n${L}\n\nTotal: ₹${R(tot()[1])} (delivery extra)\nName: ${$("nm").value}\nNeeded by: ${$("dt").value}\nNotes: ${$("nt").value}`;
   $('wa').classList.toggle('off',!ks.length);
@@ -395,6 +399,10 @@ function orderText(id){
  t+=NL+NL+'📆 *NEEDED BY*'+NL+d+(val('oc')?NL+'🎉 Occasion: '+val('oc'):'')+(val('nt')?NL+'📝 Notes: '+val('nt'):'');
  t+=NL+NL+'🙏 Thank you for choosing *Mithi Mithaas*! 🍬';
  return t}
+$('ci').addEventListener('click',e=>{const b=e.target.closest('button.rm');if(!b)return;e.stopPropagation();const i=b.dataset.i,nm=I[i].n;delete cart[i];sv();upd();toast(nm+' removed')},true);
+$('ci').insertAdjacentHTML('afterend',"<button id='cc'>Clear cart</button>");
+$('cc').onclick=()=>{cart={};sv();upd();draw();toast('Cart cleared')};
+const _u3=upd;upd=()=>{_u3();$('cc').style.display=Object.keys(cart).length?'':'none'};
 list.classList.add('anim');
 chips();draw();upd();ready=true;
 </script>
