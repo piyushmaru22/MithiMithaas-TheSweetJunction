@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mithi Mithaas – Handmade Mithai, Mumbai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+:root{color-scheme:light;--bg:#fff8ea;--bg2:#fde9c3;--card:#fffdf8;--text:#3b2417;--muted:#85685a;--line:#f1deb4;--mar:#8c2f2b;--on:#fff;--gold:#f2b24c;--saff:#e8892b;--pista:#7a9a4b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.5}
+h1,h2,h3,.serif{font-family:"Playfair Display",Georgia,serif;font-weight:500}
+em{color:var(--mar);font-style:italic}
+.w{max-width:1100px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--mar);text-decoration:none}
+.logo small{display:block;font:500 .55rem "DM Sans";letter-spacing:.18em;color:var(--muted)}
+nav a{color:var(--text);text-decoration:none;font-size:.9rem;margin-left:16px}
+.btn{display:inline-block;background:var(--mar);color:var(--on);border:0;border-radius:6px;padding:12px 20px;font:500 .95rem "DM Sans";cursor:pointer;text-decoration:none}
+.btn.alt{background:var(--bg2);color:var(--mar)}
+.hero{padding:56px 0 48px;text-align:left}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.1;margin:0 0 16px}
+.hero p{max-width:520px;color:var(--muted);font-size:1.05rem}
+.hero .row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.band{background:var(--bg2);text-align:center;padding:26px 12px}
+.band h2{margin:0;font-size:1.5rem}.band p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.sec{padding:48px 0}
+.sec h2{font-size:clamp(1.8rem,5vw,2.6rem);margin:0 0 6px}
+.eyebrow{font-size:.7rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.tools input{flex:1;min-width:180px;padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);font:1rem "DM Sans"}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:99px;padding:7px 14px;font:.85rem "DM Sans";cursor:pointer}
+.chip.on{background:var(--mar);color:var(--on);border-color:var(--mar)}
+.cat{margin:28px 0 12px;font-size:1.4rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:1.02rem;line-height:1.3}
+.tag{font-size:.7rem;color:var(--mar);background:var(--bg2);border-radius:4px;padding:1px 7px;align-self:flex-start}
+.price{color:var(--muted);font-size:.9rem}.price b{color:var(--text);font-size:1.05rem}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1.1rem;cursor:pointer}
+.qty span{min-width:58px;text-align:center;font-weight:500}
+.card .btn{margin-top:auto;padding:10px;width:100%}
+.dark{background:var(--mar);color:#fff;padding:52px 0}
+.dark h2 em{color:var(--gold)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:22px}
+.facts b{display:block;margin-bottom:4px}.facts p{margin:0;opacity:.85;font-size:.9rem}
+footer{background:var(--bg2);padding:30px 0 90px;font-size:.9rem}
+footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 6px 20px #0004;border-radius:99px;padding:14px 22px}
+#dr{position:fixed;inset:0;z-index:40;display:none;background:#0006}
+#dr.open{display:block}
+#pan{position:absolute;right:0;top:0;bottom:0;width:min(420px,100%);background:var(--bg);padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.ci{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;align-items:center}
+.ci small{color:var(--muted);display:block}
+.ci .qty span{min-width:48px}
+.tot{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;margin-top:6px}
+#pan input,#pan textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);font:1rem "DM Sans"}
+.note{font-size:.8rem;color:var(--muted)}
+.chips{position:sticky;top:calc(70px + env(safe-area-inset-top,0px));z-index:10;background:var(--bg);padding:10px 0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+.chip{white-space:nowrap}
+.hero{background:radial-gradient(circle at 85% 15%,var(--bg2),transparent 55%)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badges span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:.82rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding-top:30px}
+.steps div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:.9rem;color:var(--muted)}
+.steps b{display:block;color:var(--mar);margin-bottom:2px}
+.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px #0001}
+.ic{font-size:1.7rem;line-height:1}
+.btn{text-align:center}.btn:active,.chip:active{transform:scale(.97)}
+.btn.off{opacity:.45;pointer-events:none}
+.lbl{font-size:.78rem;color:var(--muted)}
+.frm{display:flex;flex-direction:column;gap:10px}
+.err{border-color:#c0392b!important;background:#c0392b14!important}
+#pan select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);font:1rem 'DM Sans'}
+#ok{display:none;text-align:center;padding:10px 0}#ok h3{font-size:1.5rem;margin:6px 0}#ok .btn{display:block;margin:8px 0}
+#pan.sent .frm{display:none}#pan.sent #ok{display:block}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:#2a1c1c;color:#fff;padding:10px 18px;border-radius:99px;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90%}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){#pan{width:100%}.grid{grid-template-columns:1fr}nav{display:none}}
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23e9b96a' stroke-opacity='.28'%3E%3Ccircle cx='40' cy='40' r='12'/%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M40 14v10M40 56v10M14 40h10M56 40h10'/%3E%3C/g%3E%3Cg fill='%23e9b96a' fill-opacity='.22'%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='80' cy='0' r='4'/%3E%3Ccircle cx='0' cy='80' r='4'/%3E%3Ccircle cx='80' cy='80' r='4'/%3E%3C/g%3E%3C/svg%3E")}
+header::after{content:'';position:absolute;left:0;right:0;top:100%;height:12px;background:radial-gradient(circle at 11px 0,var(--saff) 10px,transparent 11px) 0 0/22px 12px repeat-x;pointer-events:none}
+.logo{font-size:1.45rem}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:8px 30px;align-items:center;padding-top:44px}
+.hero>*{grid-column:1}.hero>.art{grid-column:2;grid-row:1/7;justify-self:center;width:100%;max-width:340px;filter:drop-shadow(0 14px 16px #8a5a1a33)}
+.band{background:linear-gradient(90deg,#fde3b0,#fff0cf,#fde3b0)}
+.dark{background:linear-gradient(180deg,#fdebc6,#fbd99e);color:var(--text)}
+.dark h2 em,.dark .eyebrow{color:var(--mar)}
+.cat{display:flex;align-items:center;gap:12px}.cat::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--saff),transparent)}
+.ic{width:34px;height:5px;border-radius:9px;font-size:0}
+.card{border-radius:14px;box-shadow:0 2px 8px #b9791f12}
+.price b{color:var(--mar)}
+.tick{width:58px;height:58px;border-radius:50%;background:var(--pista);color:#fff;font-size:1.8rem;line-height:58px;margin:0 auto}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ag .w2{grid-column:1/-1}
+#pan input[type=date]{min-height:42px}
+footer{background:linear-gradient(180deg,var(--bg2),#fbd9a0)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero>.art{grid-column:1;grid-row:auto;max-width:260px;margin-top:10px}}
+</style>
+</head>
+<body>
+<header><div class="w"><a class="logo" href="#top">Mithi Mithaas<small>HANDMADE WITH HEART</small></a><nav><a href="#menu">Menu</a><a href="#order">How to order</a></nav></div></header>
+<main id="top">
+<section class="w hero">
+  <div class="eyebrow">Sweet moments, made in Mumbai</div>
+  <h1>Sweetness,<br><em>made with love.</em></h1>
+  <p>Old-world recipes, pure cow's ghee and a whole lot of heart. Handcrafted mithai for the moments that bring everyone together.</p>
+  <div class="row"><a class="btn" href="#menu">Explore our sweets ↗</a><a href="tel:+919324796390" style="color:var(--text);text-decoration:none">Call 93247 96390</a></div>
+  <div class='badges'><span>Pure cow's ghee</span><span>Delivery across Mumbai</span><span>Custom packs for occasions</span></div>
+  <svg class='art' viewBox='0 0 320 300' aria-hidden='true'><defs><radialGradient id='pl' cx='.4' cy='.35' r='.8'><stop offset='0' stop-color='#fbe3a1'/><stop offset='.6' stop-color='#e2a94a'/><stop offset='1' stop-color='#b9791f'/></radialGradient><radialGradient id='ld' cx='.35' cy='.3' r='.8'><stop offset='0' stop-color='#ffc65c'/><stop offset='1' stop-color='#df7a1a'/></radialGradient><radialGradient id='pd' cx='.35' cy='.3' r='.8'><stop offset='0' stop-color='#f8e6c4'/><stop offset='1' stop-color='#d6a766'/></radialGradient></defs><ellipse cx='160' cy='272' rx='115' ry='14' fill='#b9791f' opacity='.18'/><circle cx='160' cy='150' r='128' fill='url(#pl)'/><circle cx='160' cy='150' r='110' fill='none' stroke='#fff3cf' stroke-width='2' stroke-dasharray='2 7'/><circle cx='160' cy='150' r='94' fill='#fff7e2' opacity='.6'/><circle cx='128' cy='118' r='28' fill='url(#ld)'/><circle cx='194' cy='126' r='28' fill='url(#ld)'/><g fill='#fff0b8' opacity='.8'><circle cx='118' cy='108' r='2'/><circle cx='132' cy='126' r='2'/><circle cx='140' cy='110' r='2'/><circle cx='186' cy='116' r='2'/><circle cx='200' cy='134' r='2'/><circle cx='204' cy='118' r='2'/></g><rect x='92' y='160' width='46' height='46' rx='6' fill='#a9c76a' transform='rotate(24 115 183)'/><ellipse cx='115' cy='183' rx='9' ry='4' fill='#f3f7df' transform='rotate(24 115 183)'/><circle cx='182' cy='190' r='26' fill='url(#pd)'/><path d='M166 182q16-9 32 0M164 192q18-9 36 0' stroke='#b88a3e' stroke-width='1.6' fill='none'/><circle cx='182' cy='186' r='3' fill='#e8892b'/><g fill='#f29a2e'><circle cx='46' cy='72' r='9'/><circle cx='34' cy='92' r='7'/><circle cx='282' cy='214' r='9'/><circle cx='294' cy='194' r='7'/></g></svg>
+</section>
+<div class="band"><h2>Some things taste like <em>home.</em></h2><p>That's the feeling we're here to make.</p></div>
+
+<div class='w steps'><div><b>1 · Choose</b>Pick your sweets and quantity</div><div><b>2 · Add details</b>Your name, phone and address</div><div><b>3 · Send</b>One tap sends your order to us on WhatsApp</div></div>
+<section class="sec w" id="menu">
+  <div class="eyebrow">A little of everything</div>
+  <h2>Find your <em>favourite.</em></h2>
+  <p class="price">Pick a quantity and add to cart. Prices are per kg unless stated. Packs of ½ kg and 1 kg.</p>
+  <div class="tools"><input id="s" type="search" placeholder="Search sweets (e.g. modak, peda, laddoo)…"></div>
+  <div class="chips" id="chips"></div>
+  <div id="list"></div>
+</section>
+
+<section class="dark" id="order"><div class="w">
+  <div class="eyebrow">Made just for your moment</div>
+  <h2 style="font-size:2.4rem;margin:6px 0">Let's make it <em>a little sweeter.</em></h2>
+  <div class="facts">
+    <div><b>A little notice, please</b><p>Order at least 2 days ahead for 1 kg. For quantities over 1 kg, please allow 5 days.</p></div>
+    <div><b>Across Mumbai</b><p>We deliver citywide. Delivery charges apply based on your location.</p></div>
+    <div><b>Made for your occasion</b><p>Custom packs and assortments for celebrations, gifting and everything in between. All sweets are made in cow's ghee.</p></div>
+  </div>
+  <p style="margin-top:26px">Speak with Charmi<br><a class="serif" style="color:var(--mar);font-size:1.6rem;text-decoration:none" href="tel:+919324796390">93247 96390</a></p>
+</div></section>
+</main>
+<footer><div class="w"><div><div class="logo">Mithi Mithaas</div>Tradition in every bite.<br>A little sweetness in every day.</div><div style="text-align:right">Orders &amp; enquiries<br><b>+91 93247 96390</b><br><span class="note">© 2026 Mithi Mithaas · Made with love in Mumbai</span></div></div></footer>
+
+<button class="btn" id="fab">View cart · <span id="fc">0</span> · ₹<span id="ft">0</span></button>
+<div id="dr"><div id="pan">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Your cart</h2><button class="chip" id="x">Close ✕</button></div>
+  <div id="ci"></div>
+  <div class="tot"><span>Total</span><span>₹<span id="tt">0</span></span></div>
+  <div class="note">Delivery charges extra. Final amount is confirmed on WhatsApp.</div>
+  <div class='frm'>
+  <div class='lbl'>Your details</div>
+  <input id='nm' placeholder='Full name *' autocomplete='name'>
+  <input id='ph' type='tel' inputmode='tel' placeholder='Mobile number *' autocomplete='tel'>
+  <select id='md'><option>Delivery</option><option>Pickup</option></select>
+  <div id='adg'><div class='lbl' style='margin-bottom:6px'>Delivery address</div><div class='ag'>
+  <input id='ad' class='w2' placeholder='Flat / House no. and Building / Society *' autocomplete='address-line1'>
+  <input id='a3' class='w2' placeholder='Street / Area / Locality *' autocomplete='address-line2'>
+  <input id='a4' class='w2' placeholder='Landmark (optional)'>
+  <input id='a5' value='Mumbai' placeholder='City *'>
+  <input id='a6' inputmode='numeric' maxlength='6' placeholder='Pincode *' autocomplete='postal-code'>
+  </div></div>
+  <div class='lbl'>Needed by *</div><input id='dt' type='date'>
+  <div class='note' id='dn'></div>
+  <input id='oc' placeholder='Occasion (optional) – Diwali, wedding, birthday…'>
+  <textarea id="nt" rows="2" placeholder='Notes – customisation, packing… (optional)'></textarea>
+  <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Send order on WhatsApp ↗</a>
+  <div class='note'>2 days notice for 1 kg · 5 days for more than 1 kg.</div>
+  </div>
+  <div id='ok'><div class='tick'>✓</div><h3 class='serif'>Almost there!</h3><p>WhatsApp has opened with your order <b id='oid'></b>.<br><b>Please press Send</b> there so Mithi Mithaas receives it.</p><a class='btn' id='wa2' href='#' target='_blank' rel='noopener'>Open WhatsApp again ↗</a><button class='btn alt' id='cp'>Copy order text</button><button class='btn alt' id='nw'>I've sent it – start new order</button></div>
+</div></div>
+
+<div id='toast'></div>
+<script>
+const M={
+"Mithai & Paks":[["Kutchi Steam Modak",800,"kg","Jaggery"],["Mohanthal",550],["Kesar Mohanthal",700],["Gorpapdi",550,"kg","Jaggery"],["Nachni Gorpapdi",750],["Sp. Kesar Khoprapak",600],["Dryfruit Gundar Pak",1000],["Dryfruit Aradiya Pak",1000],["Sp. Dryfruit Aatho (Winter)",1400],["Sp. Katlapaak (Winter)",1000,"kg","Jaggery"],["Sp. Badampak",1000,"kg","Jaggery"],["Sp. Dryfruit Cranberry Pak",1200],["Sp. Roasted Dryfruit Gulabpak",1200],["Sp. Dryfruit Kesar Pista Ghari",1200],["Sp. Pure Ghee Bombay Dryfruit Karachi Halwa",700]],
+"Laddoos":[["Finia Laddoo",700],["Sp. Maati Rajwadi Finia Laddoo",950],["Godia Laddoo (Dink)",800,"kg","Jaggery"],["Sp. Dryfruit Dink Laddoo",1100,"kg","Jaggery"],["Sp. Dryfruit Methi Laddoo",1000,"kg","Jaggery"],["Dryfruit Gaund Aata Laddoo",800,"kg","Jaggery"],["Yellow Moongdaal Laddoo (Magdalia)",900],["Green Whole Moong Laddoo",900,"kg","Sugar / Jaggery"],["Sp. Sattu & Makhana Dryfruit Laddoo",900],["Dryfruit Oats Laddoo",800,"kg","Sugar & Jaggery"],["Sp. Dryfruit Oats & Makhana Laddoo",1200],["Dryfruit Millet Laddoo (Bajra & Jowari)",1200,"kg","Jaggery"],["Sp. Dryfruit Nachni Laddoo",1200,"kg","Jaggery"],["Pure Ghee Dryfruit Boondi Laddoo (Full Loaded)",750],["Pure Ghee Boondi Laddoo (Less Dryfruit)",500],["Besan Laddoo",700,"kg","Sugar & Jaggery"],["Dryfruit Rava & Coconut Laddoo",800,"kg","Sugar & Jaggery"],["Dryfruit Churma Laddoo",800,"kg","Jaggery"],["Dryfruit Date Balls",1200],["Paan Gulkand Balls",1000]],
+"Pedas & Milk Sweets":[["Malai Peda",900],["Kesar Malai Peda",1000],["Stuff Dryfruit Kesar Peda",1200],["Danedar Kesar Peda",900],["Thabdi Peda",900],["Butter Scotch Peda",900],["Stuff Gulkand Rose Peda",1200],["Sp. Dodha Burfi",900],["Sp. Milk Anjeer Burfi",1100],["Sp. Milk Kalakand",1000],["Milk Cake",1000]],
+"Sugar-Free":[["Sp. Dryfruit Khajoor Pak",1100],["Roasted Nuts & Dried Fruits Bites (Kiwi, Orange, Apricot, Strawberry)",1400],["Sp. Dryfruit Anjeer Pak",1200],["Sp. Dryfruit Anjeer Gulkand Pak",1200]],
+"Chocolates & Treats":[["Mix Assorted Chocolates",800],["Mix Dryfruit Chocolates",1000],["Lonavala Sp. Chocolate Walnut Fudge",1100,"fq","Sold in 250 g, 500 g, 1 kg"],["Chocolate Slabs (Fruit & Nut, Crackle, Rasmalai, Coffee Walnut…)",120,"pc","Each"],["Hazelnut Slab",150,"pc","Each"],["Roasted Almond Rocks",1400],["Roasted Pistachio Rocks",1400],["Dubai Sp. Khunafa Chocolates",1400],["Roasted Dryfruit Bark",1200],["Roasted Pistachio Cranberry Bark",1200],["Roasted Hazelnut Bark",1200],["Dryfruit Stuff Date Chocolates",1400],["Hot Chocolate Stirrers (Coffee Choco, Oreo, Rose Dryfruit, Kesar Pista…)",20,"pc","Per piece · mix packs of 5, 10, 12, 24"],["Tempting Cake Balls",20,"pc","Per ball · packs of 6, 12, 24"],["Chocolate Cakesicles",30,"pc","Per piece"]]
+};
+const I=[];for(const c in M)M[c].forEach(a=>I.push({c,n:a[0],p:a[1],u:a[2]||"kg",t:a[3]||""}));
+const IC={'Mithai & Paks':'#e8892b','Laddoos':'#f2b24c','Pedas & Milk Sweets':'#d9a066','Sugar-Free':'#7a9a4b','Chocolates & Treats':'#7a4a32'};
+const st=u=>u==="pc"?1:u==="fq"?.25:.5;
+const fq=(q,u)=>u==="pc"?q+(q>1?" pcs":" pc"):q+" kg";
+const R=n=>Math.round(n).toLocaleString("en-IN");
+let cart={},sel={},cat="All",term="";
+try{cart=JSON.parse(localStorage.getItem("mm-cart")||"{}")||{}}catch(e){}
+const $=id=>document.getElementById(id);
+function sv(){try{localStorage.setItem("mm-cart",JSON.stringify(cart))}catch(e){}}
+function chips(){const cs=["All",...Object.keys(M)];$("chips").innerHTML=cs.map(c=>`<button class="chip${c===cat?" on":""}" data-c="${c}">${c}</button>`).join("");
+$("chips").onclick=e=>{const c=e.target.dataset.c;if(c){cat=c;chips();draw()}}}
+function draw(){
+  let h="",last="";
+  I.forEach((it,i)=>{
+    if(cat!=="All"&&it.c!==cat)return;
+    if(term&&!it.n.toLowerCase().includes(term))return;
+    if(it.c!==last){last=it.c;h+=`</div><h3 class="cat serif">${it.c}</h3><div class="grid">`}
+    const q=sel[i]||st(it.u);
+    h+=`<div class="card"><div class="ic" style="background:${IC[it.c]}"></div><h3>${it.n}</h3>${it.t?`<span class="tag">${it.t}</span>`:""}
+    <div class="price"><b>₹${R(it.p)}</b> / ${it.u==="pc"?"piece":"kg"}</div>${cart[i]?`<span class='tag' style='background:#dff1df;color:#1f5d1f'>In cart: ${fq(cart[i],it.u)}</span>`:''}
+    <div class="qty"><button data-a="m" data-i="${i}">−</button><span>${fq(q,it.u)}</span><button data-a="p" data-i="${i}">+</button></div>
+    <button class="btn" data-a="add" data-i="${i}">Add to cart · ₹${R(it.p*q)}</button></div>`});
+  $("list").innerHTML=h.replace(/^<\/div>/,"")+(h?"</div>":'<p class="price">No sweets match your search.</p>');
+}
+$("list").onclick=e=>{const b=e.target.closest("button");if(!b)return;const i=+b.dataset.i,it=I[i],s=st(it.u);let q=sel[i]||s;
+  if(b.dataset.a==="m")sel[i]=Math.max(s,q-s);
+  else if(b.dataset.a==="p")sel[i]=q+s;
+  else{cart[i]=(cart[i]||0)+q;sv();sel[i]=s;upd();toast(it.n+' added to cart');b.textContent="Added ✓";setTimeout(draw,600);return}
+  draw()};
+$("s").oninput=e=>{term=e.target.value.trim().toLowerCase();draw()};
+function tot(){let n=0,t=0;for(const i in cart){n++;t+=I[i].p*cart[i]}return[n,t]}
+function upd(){const[n,t]=tot();$("fc").textContent=n;$("ft").textContent=R(t);$("tt").textContent=R(t);cartDraw()}
+function cartDraw(){
+  const ks=Object.keys(cart);
+  $("ci").innerHTML=ks.length?ks.map(i=>{const it=I[i];return`<div class="ci"><div>${it.n}<small>₹${R(it.p)} × ${fq(cart[i],it.u)} = ₹${R(it.p*cart[i])}</small></div>
+  <div class="qty"><button data-a="m" data-i="${i}">−</button><span>${fq(cart[i],it.u)}</span><button data-a="p" data-i="${i}">+</button></div></div>`}).join(""):'<p class="price">Your cart is empty. Add some sweets!</p>';
+  const L=ks.map(i=>`• ${I[i].n} – ${fq(cart[i],I[i].u)} = ₹${R(I[i].p*cart[i])}`).join("\n");
+  const msg=`Hello Mithi Mithas! I'd like to order:\n${L}\n\nTotal: ₹${R(tot()[1])} (delivery extra)\nName: ${$("nm").value}\nNeeded by: ${$("dt").value}\nNotes: ${$("nt").value}`;
+  $('wa').classList.toggle('off',!ks.length);
+}
+$("ci").onclick=e=>{const b=e.target.closest("button");if(!b)return;const i=b.dataset.i,s=st(I[i].u);
+  cart[i]+=b.dataset.a==="p"?s:-s;if(cart[i]<=0)delete cart[i];sv();upd()};
+let lastTxt='';const NL=String.fromCharCode(10);
+const val=k=>$(k).value.trim();
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200)}
+function orderText(id){const dl=$('md').value==='Delivery',ks=Object.keys(cart);
+return '🌸 *New Order '+id+'* 🌸'+NL+NL+ks.map(i=>'• '+I[i].n+' – '+fq(cart[i],I[i].u)+' = ₹'+R(I[i].p*cart[i])).join(NL)+NL+NL+'*Items total: ₹'+R(tot()[1])+'* (delivery charges extra)'+NL+NL+'*Name:* '+val('nm')+NL+'*Phone:* '+val('ph')+NL+(dl?'*Delivery address:* '+val('ad'):'*Pickup*')+NL+'*Needed by:* '+val('dt')+(val('nt')?NL+'*Notes:* '+val('nt'):'')}
+$('md').onchange=()=>{$('ad').style.display=$('md').value==='Delivery'?'':'none'};
+$('wa').onclick=e=>{
+ if(!Object.keys(cart).length){e.preventDefault();return}
+ const dl=$('md').value==='Delivery',ph=val('ph').replace(/[^0-9]/g,'');
+ const bad=['nm','ph','dt'].concat(dl?['ad']:[]).filter(k=>{const ok=k==='ph'?ph.length>=10:!!val(k);$(k).classList.toggle('err',!ok);return!ok});
+ if(bad.length){e.preventDefault();$(bad[0]).focus();toast('Please fill the highlighted details');return}
+ const id='MM-'+Date.now().toString(36).toUpperCase().slice(-5);lastTxt=orderText(id);
+ const u='https://wa.me/919324796390?text='+encodeURIComponent(lastTxt);
+ e.currentTarget.href=u;$('wa2').href=u;$('oid').textContent=id;
+ setTimeout(()=>$('pan').classList.add('sent'),400)};
+$('cp').onclick=async()=>{try{await navigator.clipboard.writeText(lastTxt);toast('Order copied')}catch(x){toast('Could not copy – use the WhatsApp button')}};
+$('nw').onclick=()=>{cart={};sv();upd();$('pan').classList.remove('sent');$('dr').classList.remove('open');draw();toast('Thank you!')};
+['nm','ph','dt','ad'].forEach(k=>$(k).oninput=()=>$(k).classList.remove('err'));
+$("fab").onclick=()=>{$("dr").classList.add("open");cartDraw()};
+$('x').onclick=()=>{$('dr').classList.remove('open');$('pan').classList.remove('sent');draw()};
+$("dr").onclick=e=>{if(e.target.id==="dr")$("dr").classList.remove("open")};
+Object.keys(cart).forEach(i=>{if(!I[i])delete cart[i]});
+const z=n=>String(n).padStart(2,'0'),ymd=d=>d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());
+function setMin(){const big=Object.keys(cart).some(i=>I[i].u!=='pc'&&cart[i]>1),d=new Date();d.setDate(d.getDate()+(big?5:2));$('dt').min=ymd(d);$('dn').textContent='Earliest date: '+d.toLocaleDateString('en-IN',{day:'numeric',month:'short'})+(big?' (5 days notice for more than 1 kg)':' (2 days notice for up to 1 kg)')}
+const _u=upd;upd=()=>{_u();setMin()};
+function orderText(id){
+ const dl=$('md').value==='Delivery',ks=Object.keys(cart),n=new Date(),d=new Date(val('dt')+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ let t='*NEW ORDER '+id+'*'+NL+'Placed: '+n.toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})+NL+NL+'*ITEMS*'+NL;
+ ks.forEach((i,j)=>{t+=(j+1)+'. '+I[i].n+NL+'    '+fq(cart[i],I[i].u)+' x ₹'+R(I[i].p)+(I[i].u==='pc'?'/pc':'/kg')+' = ₹'+R(I[i].p*cart[i])+NL});
+ t+=NL+'*Items total: ₹'+R(tot()[1])+'* (delivery charges extra)'+NL+NL+'*CUSTOMER*'+NL+'Name: '+val('nm')+NL+'Phone: '+val('ph')+NL+NL;
+ t+=dl?'*DELIVERY ADDRESS*'+NL+[val('ad'),val('a3'),val('a4')&&'Landmark: '+val('a4'),val('a5')+' - '+val('a6')].filter(Boolean).join(NL):'*PICKUP* from shop';
+ t+=NL+NL+'*Needed by:* '+d+(val('oc')?NL+'*Occasion:* '+val('oc'):'')+(val('nt')?NL+'*Notes:* '+val('nt'):'');
+ return t}
+$('md').onchange=()=>{$('adg').style.display=$('md').value==='Delivery'?'':'none'};
+$('wa').onclick=e=>{
+ if(!Object.keys(cart).length){e.preventDefault();return}
+ const dl=$('md').value==='Delivery',ph=val('ph').replace(/[^0-9]/g,''),pin=val('a6').replace(/[^0-9]/g,'');
+ const chk={nm:!!val('nm'),ph:ph.length>=10,dt:!!val('dt')&&val('dt')>=($('dt').min||'')};
+ if(dl){chk.ad=!!val('ad');chk.a3=!!val('a3');chk.a5=!!val('a5');chk.a6=pin.length===6}
+ const bad=Object.keys(chk).filter(k=>{$(k).classList.toggle('err',!chk[k]);return!chk[k]});
+ if(bad.length){e.preventDefault();$(bad[0]).focus();toast('Please check the highlighted details');return}
+ try{const c={};['nm','ph','ad','a3','a4','a5','a6'].forEach(k=>c[k]=val(k));localStorage.setItem('mm-cust',JSON.stringify(c))}catch(x){}
+ const id='MM-'+Date.now().toString(36).toUpperCase().slice(-5);lastTxt=orderText(id);
+ const u='https://wa.me/919324796390?text='+encodeURIComponent(lastTxt);
+ e.currentTarget.href=u;$('wa2').href=u;$('oid').textContent=id;
+ setTimeout(()=>$('pan').classList.add('sent'),400)};
+['a3','a5','a6'].forEach(k=>$(k).oninput=()=>$(k).classList.remove('err'));
+try{const c=JSON.parse(localStorage.getItem('mm-cust')||'{}');['nm','ph','ad','a3','a4','a5','a6'].forEach(k=>{if(c[k])$(k).value=c[k]})}catch(x){}
+chips();draw();upd();
+</script>
+</body>
+</html>
