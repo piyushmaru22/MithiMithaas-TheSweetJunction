@@ -383,6 +383,18 @@ function orderText(id){
  t+=NL+NL+'🗓️ *NEEDED BY*'+NL+'📅 '+d+(val('oc')?NL+'🎉 Occasion: '+val('oc'):'')+(val('nt')?NL+'📝 Notes: '+val('nt'):'');
  t+=NL+NL+'🙏 Thank you for choosing *Mithi Mithaas*! 🍬✨';
  return t}
+function waUrl(t){const m=/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent),q='text='+encodeURIComponent(t);return m?'https://wa.me/919324796390?'+q:'https://web.whatsapp.com/send?phone=919324796390&'+q}
+$('wa').addEventListener('click',e=>{if(e.defaultPrevented||!lastTxt)return;const u=waUrl(lastTxt);$('wa').href=u;$('wa2').href=u});
+$('ok').insertAdjacentHTML('beforeend','<div class="note">Emojis not showing in WhatsApp? Tap Copy order text and paste it into the chat.</div>');
+function orderText(id){
+ const dl=$('md').value==='Delivery',ks=Object.keys(cart),n=new Date(),d=new Date(val('dt')+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),ln='──────────────';
+ let t='🌸 *NEW ORDER '+id+'* 🌸'+NL+'🕐 _'+n.toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})+'_'+NL+NL+'🛒 *ORDER DETAILS*'+NL+ln+NL;
+ ks.forEach(i=>{const it=I[i];t+='🔸 *'+it.n+'*'+NL+'     📦 '+fq(cart[i],it.u)+' × ₹'+R(it.p)+(it.u==='pc'?'/pc':'/kg')+' = *₹'+R(it.p*cart[i])+'*'+NL});
+ t+=ln+NL+'💰 *Items total: ₹'+R(tot()[1])+'*'+NL+'🚚 _Delivery charges extra_'+NL+NL+'👤 *CUSTOMER*'+NL+'🙋 Name: '+val('nm')+NL+'📞 Phone: '+val('ph')+NL+NL;
+ t+=dl?'📍 *DELIVERY ADDRESS*'+NL+'🏠 '+val('ad')+NL+'🧭 '+val('a3')+(val('a4')?NL+'📌 Landmark: '+val('a4'):'')+NL+'🌆 '+val('a5')+' - '+val('a6'):'🏪 *PICKUP FROM SHOP*';
+ t+=NL+NL+'📆 *NEEDED BY*'+NL+d+(val('oc')?NL+'🎉 Occasion: '+val('oc'):'')+(val('nt')?NL+'📝 Notes: '+val('nt'):'');
+ t+=NL+NL+'🙏 Thank you for choosing *Mithi Mithaas*! 🍬';
+ return t}
 list.classList.add('anim');
 chips();draw();upd();ready=true;
 </script>
