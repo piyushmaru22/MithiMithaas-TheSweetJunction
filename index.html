@@ -100,10 +100,73 @@ header::after{content:'';position:absolute;left:0;right:0;top:100%;height:12px;b
 #pan input[type=date]{min-height:42px}
 footer{background:linear-gradient(180deg,var(--bg2),#fbd9a0)}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.hero>.art{grid-column:1;grid-row:auto;max-width:260px;margin-top:10px}}
+@keyframes rise{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(1.2deg)}}
+@keyframes shine{to{background-position:-200% 0}}
+@keyframes glow{50%{box-shadow:0 0 0 8px rgba(232,137,43,.16),0 10px 28px rgba(140,47,43,.35)}}
+@keyframes bump{40%{transform:scale(1.18)}}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--saff),var(--mar))}
+header{transition:box-shadow .3s}header.sc{box-shadow:0 8px 26px rgba(140,47,43,.12)}
+nav a{position:relative}nav a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--saff);transition:width .3s}nav a:hover::after{width:100%}
+.hero>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) backwards}
+.hero>:nth-child(2){animation-delay:.1s}.hero>:nth-child(3){animation-delay:.2s}.hero>:nth-child(4){animation-delay:.3s}.hero>:nth-child(5){animation-delay:.4s}
+.hero>.art{animation:rise 1s .25s cubic-bezier(.2,.7,.2,1) backwards,float 7s 1.3s ease-in-out infinite}
+.hero h1 em{background:linear-gradient(100deg,var(--mar),#dd6a2a,var(--mar));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+.hero .btn{animation:glow 2.8s ease-in-out infinite}
+.btn{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,background .25s}
+.btn::after{content:'';position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .7s;pointer-events:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(140,47,43,.35)}.btn:hover::after{left:150%}
+.btn.okb{background:var(--pista)}
+.chip{transition:all .25s}.chip:hover{border-color:var(--saff);box-shadow:0 0 16px rgba(232,137,43,.4);transform:translateY(-2px)}.chip.on{box-shadow:0 6px 18px rgba(140,47,43,.3)}
+.card{position:relative;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.card::before{content:'';position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .35s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(242,178,76,.38),transparent 65%)}
+@media(hover:hover){.card:hover{transform:translateY(-5px) scale(1.03);border-color:var(--saff);box-shadow:0 0 0 1px var(--saff),0 14px 36px rgba(232,137,43,.3)}.card:hover::before{opacity:1}}
+#list.anim .card:not(.in){opacity:0}
+#list.anim .card.in{animation:rise .6s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--d,0)*70ms)}
+#list.anim .cat{animation:rise .7s cubic-bezier(.2,.7,.2,1) backwards}
+.qty button{transition:all .2s}.qty button:hover{background:var(--saff);color:#fff;border-color:var(--saff);transform:scale(1.14);box-shadow:0 0 0 4px rgba(232,137,43,.2)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+.steps div{transition:opacity .8s,transform .35s,box-shadow .35s,border-color .35s}.steps div:hover{transform:translateY(-5px);border-color:var(--saff);box-shadow:0 0 0 1px var(--saff),0 12px 30px rgba(232,137,43,.25)}
+.facts>div{padding:14px;border-radius:12px;transition:opacity .8s,transform .35s,background .35s,box-shadow .35s}.facts>div:hover{background:rgba(255,255,255,.6);transform:translateY(-4px);box-shadow:0 12px 28px rgba(140,47,43,.15)}
+input,textarea,select{transition:border-color .25s,box-shadow .25s}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--saff)!important;box-shadow:0 0 0 4px rgba(232,137,43,.2)}
+#dr{display:block;visibility:hidden;opacity:0;backdrop-filter:blur(3px);transition:opacity .35s,visibility 0s .35s}
+#dr.open{visibility:visible;opacity:1;transition:opacity .35s}
+#pan{transform:translateX(100%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}#dr.open #pan{transform:none}
+#fab{transition:transform .25s,box-shadow .25s}#fab:hover{box-shadow:0 0 0 6px rgba(232,137,43,.25),0 10px 28px rgba(140,47,43,.4)}#fab.bump{animation:bump .45s}
+#toast{transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,#list.anim .card:not(.in){opacity:1!important;transform:none!important}}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}body{overflow-x:clip;min-width:0}
+img,svg{max-width:100%}
+.hero>*,.grid>*,.ag>*,.steps>*,.facts>*,.card>*,.ci>*{min-width:0}
+input,select,textarea{max-width:100%;min-width:0}
+.card h3,.ci,.tag{overflow-wrap:anywhere}
+@media(max-width:560px){
+.w{padding-left:14px;padding-right:14px}
+header .w{height:54px}.logo{font-size:1.25rem}
+nav{display:block}nav a:nth-child(2){display:none}
+.hero{padding-top:26px;gap:6px}
+.hero h1{font-size:2.3rem}.hero p{font-size:.98rem}
+.hero .btn{padding:12px 18px}
+.hero>.art{max-width:230px}
+.badges span{font-size:.76rem;padding:5px 11px}
+.band{padding:20px 12px}.band h2{font-size:1.2rem}
+.sec{padding:32px 0}.sec h2{font-size:1.75rem}
+.steps{padding-top:20px;gap:10px}.steps div{padding:12px}
+.cat{font-size:1.2rem;margin:22px 0 10px}
+.card{padding:14px}.grid{gap:12px}
+.dark{padding:36px 0}.dark h2{font-size:1.8rem!important}.facts{gap:12px}
+footer .w>div{text-align:left!important}
+footer{padding-bottom:96px}
+#fab{left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom,0px));border-radius:14px;text-align:center}
+#pan{padding:16px 14px calc(16px + env(safe-area-inset-bottom,0px))}
+#toast{bottom:calc(76px + env(safe-area-inset-bottom,0px));font-size:.85rem}
+}
+@media(max-width:360px){.hero h1{font-size:2rem}.chip{padding:6px 11px}}
 </style>
 </head>
 <body>
-<header><div class="w"><a class="logo" href="#top">Mithi Mithaas<small>HANDMADE WITH HEART</small></a><nav><a href="#menu">Menu</a><a href="#order">How to order</a></nav></div></header>
+<div id='bar'></div><header><div class="w"><a class="logo" href="#top">Mithi Mithaas<small>HANDMADE WITH HEART</small></a><nav><a href="#menu">Menu</a><a href="#order">How to order</a></nav></div></header>
 <main id="top">
 <section class="w hero">
   <div class="eyebrow">Sweet moments, made in Mumbai</div>
@@ -202,7 +265,7 @@ function draw(){
 $("list").onclick=e=>{const b=e.target.closest("button");if(!b)return;const i=+b.dataset.i,it=I[i],s=st(it.u);let q=sel[i]||s;
   if(b.dataset.a==="m")sel[i]=Math.max(s,q-s);
   else if(b.dataset.a==="p")sel[i]=q+s;
-  else{cart[i]=(cart[i]||0)+q;sv();sel[i]=s;upd();toast(it.n+' added to cart');b.textContent="Added ✓";setTimeout(draw,600);return}
+  else{cart[i]=(cart[i]||0)+q;sv();sel[i]=s;upd();toast(it.n+' added to cart');b.textContent="Added ✓";b.classList.add('okb');setTimeout(draw,600);return}
   draw()};
 $("s").oninput=e=>{term=e.target.value.trim().toLowerCase();draw()};
 function tot(){let n=0,t=0;for(const i in cart){n++;t+=I[i].p*cart[i]}return[n,t]}
@@ -265,7 +328,26 @@ $('wa').onclick=e=>{
  setTimeout(()=>$('pan').classList.add('sent'),400)};
 ['a3','a5','a6'].forEach(k=>$(k).oninput=()=>$(k).classList.remove('err'));
 try{const c=JSON.parse(localStorage.getItem('mm-cust')||'{}');['nm','ph','ad','a3','a4','a5','a6'].forEach(k=>{if(c[k])$(k).value=c[k]})}catch(x){}
-chips();draw();upd();
+let ready=false;
+const list=$('list'),hd=document.querySelector('header'),br=$('bar');
+function bump(){const f=$('fab');f.classList.remove('bump');void f.offsetWidth;f.classList.add('bump')}
+const _u2=upd;upd=()=>{_u2();if(ready)bump()};
+let io=null;
+function reveal(){
+ const els=document.querySelectorAll('.card:not(.in),.rv:not(.in)');
+ if(!('IntersectionObserver' in window)){els.forEach(n=>n.classList.add('in'));return}
+ io=io||new IntersectionObserver(es=>{let k=0;es.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--d',k++%6);e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+ els.forEach(n=>io.observe(n))}
+const _d=draw;draw=()=>{_d();reveal()};
+document.querySelectorAll('.steps>div,.facts>div,.sec>h2,.sec>.eyebrow,.band h2,.band p').forEach(n=>n.classList.add('rv'));
+list.addEventListener('click',()=>list.classList.remove('anim'),true);
+$('chips').addEventListener('click',()=>list.classList.add('anim'),true);
+$('s').addEventListener('input',()=>list.classList.add('anim'),true);
+['x','nw'].forEach(id=>$(id).addEventListener('click',()=>list.classList.remove('anim'),true));
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}},{passive:true});
+addEventListener('scroll',()=>{hd.classList.toggle('sc',scrollY>8);const m=document.documentElement.scrollHeight-innerHeight;br.style.width=(m>0?scrollY/m*100:0)+'%'},{passive:true});
+list.classList.add('anim');
+chips();draw();upd();ready=true;
 </script>
 </body>
 </html>
